@@ -1,0 +1,34 @@
+<%
+layout("/accountmaster.html",{title:"重置密码"}){
+%>
+<header id="login-header">
+  <div id="login-logo">
+    <a href=""><img src="static/img/logo.png" alt=""/></a>
+  </div>
+</header>
+<div id="login-box-inner" class="with-heading">
+  <h4>忘记密码?</h4>
+  <p>
+    通过您的邮箱地址找回您的密码
+  </p>
+  <form role="form" action="index.html">
+    <div class="input-group reset-pass-input">
+      <span class="input-group-addon"><i class="fa fa-user"></i></span>
+      <input class="form-control" type="text" placeholder="Email address">
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <button type="submit" class="btn btn-success col-xs-12">重置密码
+        </button>
+      </div>
+      <div class="col-xs-12">
+        <br/>
+        <a href="account/login" id="login-forget-link"
+           class="forgot-link col-xs-12">返回登录</a>
+      </div>
+    </div>
+  </form>
+</div>
+<%
+}
+%>

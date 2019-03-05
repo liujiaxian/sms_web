@@ -1,0 +1,268 @@
+<%var cssSection = {%>
+<link rel="stylesheet" type="text/css" href="static/css/libs/magnific-popup.css">
+<%};%>
+
+<%var jsSection = {%>
+<script type="text/javascript">
+    function btn_change_type(_obj,typeid){
+        if(parseInt(typeid)==0){
+            _obj.parents(".btn-group").find("button:first").text('公司');
+            $(".show_type_company").css("display","block");
+            $(".show_type_personal").css("display","none");
+        }else{
+            _obj.parents(".btn-group").find("button:first").text('个人');
+            $(".show_type_company").css("display","none");
+            $(".show_type_personal").css("display","block");
+        }
+    }
+</script>
+<%};%>
+
+<%layout("/master.html",{title:"账户设置",cssSection:cssSection,jsSection:jsSection}){%>
+<div class="col-lg-12">
+    <div class="row">
+        <div class="col-lg-12">
+            <ol class="breadcrumb">
+                <li><a href="">主页</a></li>
+                <li class="active"><span>账户设置</span></li>
+            </ol>
+            <h1>账户设置</h1>
+        </div>
+    </div>
+
+    <div class="row" id="user-profile">
+        <div class="col-lg-12 col-md-12 col-sm-12">
+            <div class="main-box clearfix">
+                <div class="tabs-wrapper profile-tabs">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a href="#tab-newsfeed" data-toggle="tab">账户信息</a>
+                        </li>
+                        <li><a href="#tab-activity" data-toggle="tab">开发者信息认证</a></li>
+                        <li><a href="#tab-friends" data-toggle="tab">密码修改</a></li>
+                        <li><a href="#tab-chat" data-toggle="tab">头像上传</a></li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane fade in active" id="tab-newsfeed">
+                            <div id="newsfeed">
+                                <div class="col-lg-12">
+                                    <form class="form-horizontal" role="form">
+                                        <div class="form-group">
+                                            <label for="inputEmail1" class="col-lg-2 control-label">账号</label>
+                                            <div class="col-lg-8">
+                                                <label class="control-label">liujiaxioo@163.com</label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="inputCompany" class="col-lg-2 control-label">公司名称</label>
+                                            <div class="col-lg-8">
+                                                <input type="text" class="form-control" id="inputCompany" placeholder="公司名称">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="inputName" class="col-lg-2 control-label">联系人</label>
+                                            <div class="col-lg-8">
+                                                <input type="text" class="form-control" id="inputName" placeholder="联系人">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="inputMobile" class="col-lg-2 control-label">密保手机</label>
+                                            <div class="col-lg-8">
+                                                <input type="text" class="form-control" id="inputMobile" placeholder="密保手机">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="inputInfo" class="col-lg-2 control-label">免费短信提醒</label>
+                                            <div class="col-lg-8">
+                                                <input type="text" class="form-control" id="inputInfo" placeholder="免费短信提醒">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="inputEmail1" class="col-lg-2 control-label">免费邮件提醒</label>
+                                            <div class="col-lg-8">
+                                                <input type="email" class="form-control" id="inputEmail1" placeholder="免费邮件提醒">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="inputOtherName" class="col-lg-2 control-label">紧急联系人</label>
+                                            <div class="col-lg-2">
+                                                <input type="text" class="form-control" id="inputOtherName" placeholder="紧急联系人姓名">
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <input type="text" class="form-control" id="inputOtherNumber" placeholder="紧急联系人号码">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="col-lg-offset-2 col-lg-10">
+                                                <button type="submit" class="btn btn-success">保存信息</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="tab-activity">
+                                <form class="form-horizontal" role="form">
+                                    <div class="form-group">
+                                        <label for="inputEmail1" class="col-lg-2 control-label">开发者类型</label>
+                                        <div class="col-lg-8">
+                                            <div class="btn-group open">
+                                                <button type="button" class="btn btn-primary">公司</button>
+                                                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                                                    <span class="caret"></span>
+                                                </button>
+                                                <ul class="dropdown-menu" role="menu">
+                                                    <li><a href="javascript:;" onclick="btn_change_type($(this),0)">公司</a></li>
+                                                    <li><a href="javascript:;" onclick="btn_change_type($(this),1)">个人</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="show_type_company">
+                                        <div class="form-group">
+                                            <label for="inputCompanyName" class="col-lg-2 control-label">公司名称</label>
+                                            <div class="col-lg-8">
+                                                <input type="text" class="form-control" id="inputCompanyName" placeholder="请输入与营业执照相符的公司名称">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="inputCompanyType" class="col-lg-2 control-label">所属行业</label>
+                                            <div class="col-lg-8">
+                                                <select class="form-control" id="inputCompanyType">
+                                                    <option>请选择</option>
+                                                    <option>游戏</option>
+                                                    <option>移动应用</option>
+                                                    <option>视频</option>
+                                                    <option>教育</option>
+                                                    <option>IT/通信/电子服务</option>
+                                                    <option>电子商务</option>
+                                                    <option>金融</option>
+                                                    <option>网站</option>
+                                                    <option>商业服务</option>
+                                                    <option>房地产/建筑</option>
+                                                    <option>零售/租赁/贸易</option>
+                                                    <option>生产/加工/制造</option>
+                                                    <option>交通/物流</option>
+                                                    <option>文化传媒</option>
+                                                    <option>能源/电气</option>
+                                                    <option>政府企业</option>
+                                                    <option>农业</option>
+                                                    <option>物联网</option>
+                                                    <option>其它</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="inputCompanyCard" class="col-lg-2 control-label">证件号码</label>
+                                            <div class="col-lg-8">
+                                                <input type="text" class="form-control" id="inputCompanyCard" placeholder="请输入营业执照号，15/18位数字或字母组成">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="col-lg-2 control-label">证件照片</label>
+                                            <div class="col-lg-8">
+                                                <img src="static/img/op-sample.png">
+                                                <button type="button" class="btn btn-primary">
+                                                    <span class="fa fa-upload"></span> 上传照片
+                                                </button>
+                                                <br/>
+                                                <p><label class="control-label">将通过年检的营业执照原件或盖章的复印件扫描、拍照后上传，文件支持5M以内的PNG、JPG、GIF格式</label></p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="show_type_personal" style="display: none;">
+                                        <div class="form-group">
+                                            <label for="inputRealName" class="col-lg-2 control-label">真实姓名</label>
+                                            <div class="col-lg-8">
+                                                <input type="text" class="form-control" id="inputRealName" placeholder="请输入与身份证相符的真实姓名">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="inputIDCard" class="col-lg-2 control-label">证件号码</label>
+                                            <div class="col-lg-8">
+                                                <input type="text" class="form-control" id="inputIDCard" placeholder="请输入身份证号码">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="col-lg-2 control-label">证件照片</label>
+                                            <div class="col-lg-8">
+                                                <img src="static/img/id-sample.png">
+                                                <button type="button" class="btn btn-primary">
+                                                    <span class="fa fa-upload"></span> 上传照片
+                                                </button>
+                                                <br/>
+                                                <p><label class="control-label">请使用真实有效的身份证按示例拍照，需确保证件内容及脸部清晰，上传图片支持2M以内的PNG、JPG、GIF格式</label></p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="col-lg-offset-2 col-lg-10">
+                                            <button type="submit" class="btn btn-success">保存信息</button>
+                                        </div>
+                                    </div>
+                                </form>
+                        </div>
+                        <div class="tab-pane clearfix fade" id="tab-friends">
+                            <form class="form-horizontal" role="form">
+                                <div class="form-group">
+                                    <label for="inputOldPwd" class="col-lg-2 control-label">原密码</label>
+                                    <div class="col-lg-8">
+                                        <input type="password" class="form-control" id="inputOldPwd" placeholder="请填写原来的密码">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="inputNewPwd" class="col-lg-2 control-label">新密码</label>
+                                    <div class="col-lg-8">
+                                        <input type="password" class="form-control" id="inputNewPwd" placeholder="请填写6-16位数字英文组合">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="inputRePwd" class="col-lg-2 control-label">确认新密码</label>
+                                    <div class="col-lg-8">
+                                        <input type="password" class="form-control" id="inputRePwd" placeholder="请再次填写新密码">
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group">
+                                    <div class="col-lg-offset-2 col-lg-10">
+                                        <button type="submit" class="btn btn-success">保存信息</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="tab-pane fade" id="tab-chat">
+                            <div class="main-box-body clearfix">
+                                <img src="static/img/samples/scarlet-159.png" alt=""
+                                     class="profile-img img-responsive center-block"/>
+                                <div class="profile-label">
+                                    <a class="btn btn-info btn-sm"><i class="fa fa-upload"></i> 上传头像</a>
+                                </div>
+                                <br/>
+                                <div class="profile-message-btn center-block text-center">
+                                    <a href="#" class="btn btn-success">
+                                        保存信息
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<%}%>

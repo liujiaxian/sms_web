@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean name="beetlConfig" class="org.beetl.ext.spring.BeetlGroupUtilConfiguration" init-method="init">
+        <property name="configFileResource" value="/WEB-INF/beetl.properties"/>
+        <property name="root" value="/WEB-INF/templates/"></property>
+        <property name="sharedVars">
+            <map>
+                <entry key="AGENT_CENTER_URL" value="${agent_center_url}"></entry>
+                <entry key="ORDER_PAYMENT_URL" value="${order_payment_url}"></entry>
+            </map>
+        </property>
+    </bean>
+
+    <bean name="beetlViewResolver" class="org.beetl.ext.spring.BeetlSpringViewResolver">
+        <property name="config" ref="beetlConfig"/>
+        <property name="contentType" value="text/html;charset=UTF-8"/>
+    </bean>
+
+</beans>

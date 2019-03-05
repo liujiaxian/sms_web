@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="locations">
+            <list>
+                <value>classpath:properties/${SERVER_ENV}/datasource.properties</value>
+                <value>classpath:properties/${SERVER_ENV}/app.properties</value>
+            </list>
+        </property>
+    </bean>
+    <mvc:annotation-driven/>
+    <context:component-scan base-package="com.kwanhon.controller"></context:component-scan>
+    <!--静态资源-->
+    <mvc:resources location="static/" mapping="static/**"/>
+
+    <import resource="beetl-config.xml"></import>
+</beans>

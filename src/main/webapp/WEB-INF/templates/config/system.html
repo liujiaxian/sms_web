@@ -1,0 +1,230 @@
+<%var cssSection = {%>
+<link rel="stylesheet" type="text/css" href="static/css/libs/magnific-popup.css">
+<link rel="stylesheet" type="text/css" href="static/css/compiled/elements.css"/>
+
+<%};%>
+
+<%var jsSection = {%>
+<script>
+    $(document).ready(function() {
+        $('.bs-example-tooltips i').popover();
+    });
+</script>
+<%};%>
+
+<%layout("/master.html",{title:"账户设置",cssSection:cssSection,jsSection:jsSection}){%>
+<div class="col-lg-12">
+    <div class="row">
+        <div class="col-lg-12">
+            <ol class="breadcrumb">
+                <li><a href="">主页</a></li>
+                <li class="active"><span>系统设置</span></li>
+            </ol>
+            <h1>系统设置</h1>
+        </div>
+    </div>
+
+    <div class="row" id="user-profile">
+        <div class="col-lg-12 col-md-12 col-sm-12">
+            <div class="main-box clearfix">
+                <div class="tabs-wrapper profile-tabs">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a href="#tab-newsfeed" data-toggle="tab">余额提醒</a>
+                        </li>
+                        <li><a href="#tab-activity" data-toggle="tab">IP白名单</a></li>
+                        <li><a href="#tab-friends" data-toggle="tab">数据推送与获取</a></li>
+                        <li><a href="#tab-chat" data-toggle="tab">仿轰炸规则</a></li>
+                        <li><a href="#tab-info" data-toggle="tab">敏感信息保护</a></li>
+                        <li><a href="#tab-print" data-toggle="tab">导出记录</a></li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane fade in active" id="tab-newsfeed">
+                            <div id="newsfeed">
+                                <div class="col-lg-12">
+                                    <form class="form-horizontal" role="form">
+                                        <div class="form-group">
+                                            <label for="inputConfirmMoney" class="col-lg-2 control-label">提醒金额</label>
+                                            <div class="col-lg-8">
+                                               <input type="text" class="form-control" id="inputConfirmMoney" placeholder="提醒金额" value="0">
+                                                <span class="text-danger">账户余额低于该金额时(余额大于10有效)发送提醒信息</span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="inputCompany" class="col-lg-2 control-label">公司名称</label>
+                                            <div class="col-lg-8">
+                                                <input type="text" class="form-control" id="inputCompany" placeholder="公司名称">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="inputInfo" class="col-lg-2 control-label">免费短信提醒</label>
+                                            <div class="col-lg-8">
+                                                <input type="text" class="form-control" id="inputInfo" placeholder="免费短信提醒">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="inputEmail1" class="col-lg-2 control-label">免费邮件提醒</label>
+                                            <div class="col-lg-8">
+                                                <input type="email" class="form-control" id="inputEmail1" placeholder="免费邮件提醒">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-lg-2 control-label">提醒时间</label>
+                                            <div class="col-lg-8">
+                                                <label class="control-label">8:00-22:00</label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="col-lg-offset-2 col-lg-10">
+                                                <button type="submit" class="btn btn-success">保存信息</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="tab-activity">
+                            <div class="alert alert-info fade in bs-example-tooltips">
+                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                <strong>提示!</strong> 服务器白名单可以保护账号安全，只有白名单内的服务器IP可以调用云片接口。
+                                    <i class="fa fa-question-circle fa-fw fa-lg" data-container="body" data-toggle="popover" data-placement="bottom" data-content="用户从您的网站获取验证码，会通过您的服务器调用云片接口，所以设置服务器白名单不会影响您 的用户正常使用。如果您不是技术人员不知道服务器IP，请让技术人员给您服务器IP，或者请技术人员来操作。开启后，如出现非白名单内的服务器IP调用，可以设置短信、邮件提醒 。" data-original-title="" title="" style="cursor: pointer;"></i>
+                                </button>
+                            </div>
+                                <form class="form-horizontal" role="form">
+
+                                    <div class="form-group">
+                                        <label for="inputEmail1" class="col-lg-2 control-label">当前状态</label>
+                                        <div class="col-lg-8">
+                                            <div class="onoffswitch">
+                                                <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" checked="">
+                                                <label class="onoffswitch-label" for="myonoffswitch">
+                                                    <div class="onoffswitch-inner"></div>
+                                                    <div class="onoffswitch-switch"></div>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="inputHostIP" class="col-lg-2 control-label">添加服务器IP地址</label>
+                                        <div class="col-lg-8">
+                                            <textarea class="form-control" id="inputHostIP" rows="5" placeholder="多个IP地址用英文逗号隔开"></textarea>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="col-lg-offset-2 col-lg-10">
+                                            <button type="submit" class="btn btn-success">保存信息</button>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-lg-2 control-label">出现非白名单IP访问时</label>
+                                        <div class="col-lg-8">
+                                            <div class="checkbox-nice checkbox-inline">
+                                                <input type="checkbox" id="checkbox-inl-1">
+                                                <label for="checkbox-inl-1">
+                                                    短信提醒
+                                                </label>
+                                            </div>
+                                            <div class="checkbox-nice checkbox-inline">
+                                                <input type="checkbox" id="checkbox-inl-2">
+                                                <label for="checkbox-inl-2">
+                                                    邮件提醒
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+
+
+                                </form>
+                        </div>
+                        <div class="tab-pane clearfix fade" id="tab-friends">
+                            <form class="form-horizontal" role="form">
+                                <div class="form-group">
+                                    <label for="inputOldPwd" class="col-lg-2 control-label">原密码</label>
+                                    <div class="col-lg-8">
+                                        <input type="password" class="form-control" id="inputOldPwd" placeholder="请填写原来的密码">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="inputNewPwd" class="col-lg-2 control-label">新密码</label>
+                                    <div class="col-lg-8">
+                                        <input type="password" class="form-control" id="inputNewPwd" placeholder="请填写6-16位数字英文组合">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="inputRePwd" class="col-lg-2 control-label">确认新密码</label>
+                                    <div class="col-lg-8">
+                                        <input type="password" class="form-control" id="inputRePwd" placeholder="请再次填写新密码">
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group">
+                                    <div class="col-lg-offset-2 col-lg-10">
+                                        <button type="submit" class="btn btn-success">保存信息</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="tab-pane fade" id="tab-chat">
+                            <div class="main-box-body clearfix">
+                                <img src="static/img/samples/scarlet-159.png" alt=""
+                                     class="profile-img img-responsive center-block"/>
+                                <div class="profile-label">
+                                    <a class="btn btn-info btn-sm"><i class="fa fa-upload"></i> 上传头像</a>
+                                </div>
+                                <br/>
+                                <div class="profile-message-btn center-block text-center">
+                                    <a href="#" class="btn btn-success">
+                                        保存信息
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="tab-pane fade" id="tab-info">
+                            <div class="main-box-body clearfix">
+                                <img src="static/img/samples/scarlet-159.png" alt=""
+                                     class="profile-img img-responsive center-block"/>
+                                <div class="profile-label">
+                                    <a class="btn btn-info btn-sm"><i class="fa fa-upload"></i> 上传头像</a>
+                                </div>
+                                <br/>
+                                <div class="profile-message-btn center-block text-center">
+                                    <a href="#" class="btn btn-success">
+                                        保存信息
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="tab-pane fade" id="tab-print">
+                            <div class="main-box-body clearfix">
+                                <img src="static/img/samples/scarlet-159.png" alt=""
+                                     class="profile-img img-responsive center-block"/>
+                                <div class="profile-label">
+                                    <a class="btn btn-info btn-sm"><i class="fa fa-upload"></i> 上传头像</a>
+                                </div>
+                                <br/>
+                                <div class="profile-message-btn center-block text-center">
+                                    <a href="#" class="btn btn-success">
+                                        保存信息
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<%}%>

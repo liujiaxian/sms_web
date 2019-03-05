@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <import resource="spring-config-datasource.xml"></import>
+    <context:component-scan base-package="com.kwanhon"></context:component-scan>
+    <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="locations">
+            <list>
+                <value>classpath:properties/${SERVER_ENV}/datasource.properties</value>
+                <value>classpath:properties/${SERVER_ENV}/app.properties</value>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+        <property name="dataSource" ref="dataSource"></property>
+    </bean>
+    <bean name="httpServiceCaller" class="com.kwanhon.common.remote.HttpServiceCaller">
+        <!--<property name="remoteHost" value="http://192.168.1.201:8080/api"></property>-->
+        <property name="remoteHost" value="${api_center_host}"></property>
+        <property name="appId" value="${api_center_uid}"></property>
+        <property name="apiKey" value="${api_center_key}"></property>
+    </bean>
+</beans>

@@ -1,0 +1,64 @@
+<%
+var jsPart = {
+%>
+
+<%};%>
+
+<%
+layout("/accountmaster.html",{title:"注册会员",jsSection:jsPart}){
+%>
+<header id="login-header">
+  <div id="login-logo">
+    <a href=""><img src="static/img/logo.png" alt=""/></a>
+  </div>
+</header>
+<div id="login-box-inner">
+  <form role="form" action="registration-full.html">
+    <div class="input-group">
+      <span class="input-group-addon"><i class="fa fa-user"></i></span>
+      <input class="form-control" type="text" placeholder="Full name">
+    </div>
+    <div class="input-group">
+      <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+      <input class="form-control" type="text" placeholder="Email address">
+    </div>
+    <div class="input-group">
+      <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+      <input type="password" class="form-control" placeholder="Enter password">
+    </div>
+    <div class="input-group">
+      <span class="input-group-addon"><i class="fa fa-unlock-alt"></i></span>
+      <input type="password" class="form-control" placeholder="Re-enter password">
+    </div>
+    <div id="remember-me-wrapper">
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="checkbox-nice">
+            <input type="checkbox" id="terms-cond" checked="checked"/>
+            <label for="terms-cond">
+              I accept terms and conditions
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <button type="submit" class="btn btn-success col-xs-12">注册</button>
+      </div>
+    </div>
+  </form>
+</div>
+<div id="login-box-footer">
+  <div class="row">
+    <div class="col-xs-12">
+      已有账号吗?
+      <a href="account/login">
+        立即登录
+      </a>
+    </div>
+  </div>
+</div>
+<%
+}
+%>
